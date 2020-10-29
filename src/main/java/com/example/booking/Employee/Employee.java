@@ -30,10 +30,16 @@ public class Employee {
     private String code;
 
     @Column
-    private String name;
+    private String firstName;
+
+    @Column
+    private String lastName;
 
     @Column
     private String email;
+
+    @Column
+    private String password;
 
     @ManyToOne
     private Department department;

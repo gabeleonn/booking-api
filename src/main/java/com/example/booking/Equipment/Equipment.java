@@ -29,11 +29,10 @@ public class Equipment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(length = 12)
-    private String code;
-
     @Column
     private String description;
+
+    //should have brands
 
     @Column(name = "is_active")
     @Builder.Default
