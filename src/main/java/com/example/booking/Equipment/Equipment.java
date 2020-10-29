@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
+import javax.persistence.Table;
 
 import com.example.booking.Category.Category;
 
@@ -18,6 +19,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name = "equipments")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

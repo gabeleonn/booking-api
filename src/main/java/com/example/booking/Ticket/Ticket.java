@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
+import javax.persistence.Table;
 
 import com.example.booking.Employee.Employee;
 import com.example.booking.Equipment.Equipment;
@@ -22,6 +23,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name = "tickets")
 @Data
 @Builder
 @NoArgsConstructor
