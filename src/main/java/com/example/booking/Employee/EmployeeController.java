@@ -1,5 +1,9 @@
 package com.example.booking.Employee;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -13,19 +17,25 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RequestMapping("/employees")
 public class EmployeeController {
 
+    @Autowired private EmployeeRepository repository;
+    @Autowired private EmployeeService service;
+    @Autowired private PasswordEncoder passwordEncoder;
+
     @GetMapping
-    public static String findAll() {
-        return "Get many";
+    public List<Employee> findAll() {
+        return repository.findAll();
     }
 
     @GetMapping("{id}")
-    public static String findOne(@PathVariable(value = "id") Integer id) {
-        return String.format("Get one (%s)", Integer.toString(id));
+    public List<Employee> findOne(@PathVariable(value = "id") Integer id) {
+        return repository.findAll();
     }
 
     @PostMapping
-    public static String create(@RequestBody Employee newEmployee) {
-        return String.format("Adding new (%s)", newEmployee.getId());
+    public void create(@RequestBody Employee newEmployee) {
+        newEmployee.setPassword(this.passwordEncoder.encode(newEmployee.getPassword()));
+        newEmployee.setDepartment(service.getEmployeeDepartment(newEmployee.getDepartment().getId()));
+        this.repository.save(newEmployee);
     }
 
     @DeleteMapping("{id}")

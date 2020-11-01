@@ -1,5 +1,6 @@
 package com.example.booking.Department;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RequestMapping("/departments")
 public class DepartmentController {
 
+    @Autowired private DepartmentRepository repository;
+
     @GetMapping
     public static String findAll() {
         return "Get many";
@@ -24,8 +27,8 @@ public class DepartmentController {
     }
 
     @PostMapping
-    public static String create(@RequestBody Department newDepartment){
-        return String.format("Adding new (%s)", newDepartment.getId());
+    public Department create(@RequestBody Department newDepartment){
+        return repository.save(newDepartment);
     }
 
     @DeleteMapping("{id}")

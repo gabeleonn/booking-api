@@ -49,13 +49,14 @@ The API is accessible on [Not Acessible Yet.](https://github.com/gabeleonn/).
 
 ## Employees
 
-| URI                     |  HTTP  | Body | Description                    |
-| :------------------     | :----: | :--: | :-------------------------     |
-| /employess              |   GET  |   -  | Get a list of all employess    |
-| /employess/:id          |   GET  |   -  | Get details of an employee     |
-| /employess              |  POST  | JSON | Add a new employee             |
-| /employess/:id          |  PATCH |   -  | Update a employee              |
-| /employess/:id          | DELETE |   -  | Delete a employee              |
+| URI                     |  HTTP  | Body | Description                      |
+| :------------------     | :----: | :--: | :-------------------------       |
+| /employess              |   GET  |   -  | Get a list of all employess      |
+| /employess/:id          |   GET  |   -  | Get details of an employee       |
+| /employess/:id/tickets  |   GET  |   -  | Get details of employee's tickets|
+| /employess              |  POST  | JSON | Add a new employee               |
+| /employess/:id          |  PATCH |   -  | Update a employee                |
+| /employess/:id          | DELETE |   -  | Delete a employee                |
 
 ```javascript
 {
@@ -104,12 +105,11 @@ The API is accessible on [Not Acessible Yet.](https://github.com/gabeleonn/).
 ```javascript
 {
     "id": integer,
-    "description": string,
-    "isActive": boolean,
-    "inUse": boolean,
-    "category": Category,
-    "boughtAt": date
-    "lastMaintance": date
+    "employee": Employee,
+    "equipment": Equipment,
+    "status": Status(enum),
+    "withdrawDate": date
+    "returnDate": date
 }
 ```
 
